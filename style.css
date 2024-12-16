@@ -1,0 +1,149 @@
+@charset "UTF-8";
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+header,
+footer {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px 0;
+}
+
+h1 {
+  color: #333;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+}
+
+#quiz-container,
+#leaderboard-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  margin: 20px;
+}
+
+#question-container {
+  margin-bottom: 20px;
+}
+
+#question {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.choice {
+  display: block;
+  background: #e0e0e0;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.choice:hover {
+  background: #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.choice.correct {
+  background: #c8e6c9;
+  border-color: #388e3c;
+}
+
+.choice.incorrect {
+  background: #ffcdd2;
+  border-color: #d32f2f;
+}
+
+#next-btn {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+#next-btn:hover {
+  background: #0056b3;
+  transform: translateY(-3px);
+}
+
+#progress {
+  margin-top: 20px;
+  font-size: 1em;
+}
+
+footer {
+  font-size: 0.8em;
+  color: #777;
+}
+
+#username-container {
+  display: none; /* Paslėptas pradinėje būsenoje */
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#username-container.show {
+  display: flex; /* Atsiranda tik su klase "show" */
+}
+
+#username-input {
+  padding: 10px;
+  font-size: 1em;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+#submit-btn {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+#submit-btn:hover {
+  background: #0056b3;
+  transform: translateY(-3px);
+}
+
+.leaderboard-item {
+  background: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}/*# sourceMappingURL=style.css.map */

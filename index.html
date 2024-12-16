@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript Viktorina</title>
     <link rel="stylesheet" href="style.css" />
-    <script defer src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
   </head>
   <body>
     <header>
@@ -17,8 +17,20 @@
           <p id="question"></p>
           <div id="choices-container"></div>
         </div>
-        <button id="next-btn">Kitas</button>
+        <button id="next-btn" class="hide">Kitas</button>
         <p id="progress">Klausimas 1 iš 10</p>
+        <div id="username-container" class="hide">
+          <input
+            id="username-input"
+            type="text"
+            placeholder="Įveskite slapyvardį"
+          />
+          <button id="submit-btn" class="hide">Pateikti</button>
+        </div>
+      </div>
+      <div id="leaderboard-container">
+        <h2>Top 10 Geriausi Žaidėjai</h2>
+        <div id="leaderboard-list"></div>
       </div>
     </main>
     <footer>
