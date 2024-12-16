@@ -52,7 +52,7 @@ function resetState() {
     choicesContainer.removeChild(choicesContainer.firstChild);
   }
   nextButton.classList.add("hide");
-  usernameContainer.classList.remove("show"); // Paslėpti įvesties lauką
+  usernameContainer.classList.remove("show");
 }
 
 function selectAnswer(e) {
@@ -71,8 +71,7 @@ function selectAnswer(e) {
 }
 
 function setStatusClass(element, correct) {
-  if (correct) element.classList.add("correct");
-  else element.classList.add("incorrect");
+  element.classList.add(correct ? "correct" : "incorrect");
 }
 
 export function handleNextButton() {
@@ -87,28 +86,41 @@ export function handleNextButton() {
 function showResults() {
   resetState();
   questionElement.innerText = `Tu atsakei teisingai į ${score} iš ${selectedQuestions.length} klausimų! Įveskite savo slapyvardį.`;
-  usernameContainer.classList.add("show"); // Rodome įvesties lauką ir mygtuką
+  usernameContainer.classList.add("show");
   submitButton.addEventListener("click", handleSubmitScore);
 }
 
 function handleSubmitScore() {
   const username = usernameInput.value.trim();
   if (username) {
-    submitScore(username, score).then(() => {
-      loadLeaderboard();
-      usernameInput.value = "";
-      usernameContainer.classList.remove("show"); // Paslėpti po pateikimo
-    });
+    submitScore(username, score)
+      .then(() => {
+        loadLeaderboard();
+        usernameInput.value = "";
+        usernameContainer.classList.remove("show");
+      })
+      .catch((error) => {
+        console.error("Klaida pateikiant rezultatą:", error);
+      });
   }
 }
 
 async function loadLeaderboard() {
-  const scores = await fetchTopScores();
-  leaderboardList.innerHTML = "";
-  scores.forEach((entry, index) => {
-    const item = document.createElement("div");
-    item.classList.add("leaderboard-item");
-    item.innerText = `${index + 1}. ${entry.name}: ${entry.score} taškų`;
-    leaderboardList.appendChild(item);
-  });
+  try {
+    const scores = await fetchTopScores();
+    console.log("Gauti rezultatai:", scores);
+    if (!Array.isArray(scores)) {
+      throw new Error("Gauti rezultatai nėra masyvas");
+    }
+    leaderboardList.innerHTML = "";
+    scores.sort((a, b) => b.score - a.score);
+    scores.forEach((entry, index) => {
+      const item = document.createElement("div");
+      item.classList.add("leaderboard-item");
+      item.innerText = `${index + 1}. ${entry.name}: ${entry.score} taškų`;
+      leaderboardList.appendChild(item);
+    });
+  } catch (error) {
+    console.error("Klaida įkeliant lentelę:", error);
+  }
 }

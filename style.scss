@@ -62,14 +62,17 @@ main {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .choice:hover {
   background: #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .choice.correct {
   background: #c8e6c9;
   border-color: #388e3c;
 }
+
 .choice.incorrect {
   background: #ffcdd2;
   border-color: #d32f2f;
@@ -85,6 +88,7 @@ main {
   cursor: pointer;
   transition: transform 0.2s, background 0.2s;
 }
+
 #next-btn:hover {
   background: #0056b3;
   transform: translateY(-3px);
@@ -101,14 +105,14 @@ footer {
 }
 
 #username-container {
-  display: none; /* Paslėptas pradinėje būsenoje */
+  display: none;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
 }
 
 #username-container.show {
-  display: flex; /* Atsiranda tik su klase "show" */
+  display: flex;
 }
 
 #username-input {
@@ -129,6 +133,7 @@ footer {
   cursor: pointer;
   transition: transform 0.2s, background 0.2s;
 }
+
 #submit-btn:hover {
   background: #0056b3;
   transform: translateY(-3px);
